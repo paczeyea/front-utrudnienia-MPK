@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
       let circle = L.circle([lat, lng], { radius: accuracy}).addTo(map)
       
       map.fitBounds(circle.getBounds());
-      console.log(lat);
+      console.log(pos.coords.latitude);
       console.log(lng);
     }
     function error(err: any){
