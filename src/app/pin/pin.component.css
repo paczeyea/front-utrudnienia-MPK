@@ -1,0 +1,12 @@
+pin {
+    border: none;
+    background: white;
+    padding: 0;
+    display: block;
+}
+  
+pin img {
+    width: 64px;
+    height: auto;
+    transition: transform 0.3s ease;
+}  
