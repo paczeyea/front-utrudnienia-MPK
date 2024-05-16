@@ -1,7 +1,31 @@
-<h1>Dialog Title</h1>
-<div mat-dialog-content>
-  <p>To jest treść modala.</p>
-</div>
-<div mat-dialog-actions>
+<div class="schedule-modal">
+  <div class="vehicleblock">
+    <button class="busblock" id="busBlockButton" (click)="toggleView('bus')"><img src="./assets/assets-buttons/bus.svg" alt="bus"></button>
+    <button class="tramblock" id="tramBlockButton" (click)="toggleView('tram')"><img src="./assets/assets-buttons/tram.svg" alt="bus"></button>
+  </div>
+  <ng-container *ngIf="showBusNumbers">
+  <div class="numbers-container">
+    <button class="numberofvehicle">1</button>
+    <button class="numberofvehicle">2</button>
+    <button class="numberofvehicle">3</button>
+    <button class="numberofvehicle">4</button>
+    <button class="numberofvehicle">5</button>
+    <button class="numberofvehicle">6</button>
+    <button class="numberofvehicle">7</button>
+    <button class="numberofvehicle">8</button>
+  </div>
+  </ng-container>
+  <ng-container *ngIf="showTramNumbers">
+  <div class="numbers-container" *ngIf="showTramNumbers">
+    <button class="numberofvehicle">A</button>
+    <button class="numberofvehicle">B</button>
+    <button class="numberofvehicle">C</button>
+    <button class="numberofvehicle">D</button>
+    <button class="numberofvehicle">E</button>
+    <button class="numberofvehicle">F</button>
+    <button class="numberofvehicle">G</button>
+    <button class="numberofvehicle">H</button>
+  </div>
+  </ng-container>
+</div> 
 
-</div>

@@ -1,3 +1,63 @@
 mat-dialog-content{
     z-index: 100;
 }
+
+
+.numbers-container{
+    border: none;
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    border-radius: 2%;
+    height: 30vw;
+}
+
+.numberofvehicle{
+    display: grid;
+    height: 2vw;
+    width: 3vh;
+}
+
+.schedule-modal{
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.busblock{
+    border: none;
+    background: rgb(255, 255, 255);
+    padding: 0;
+    display: block;
+    border-radius: 45%;
+}
+
+.busblock:hover{
+    background-color: red;
+    border-radius: 50%;
+}
+
+.busblock:hover img {
+    transform: scale(1.1);
+}
+
+.tramblock {
+    border: none;
+    background: white;
+    padding: 0;
+    display: block;
+    border-radius: 45%;
+}
+
+.tramblock:hover{
+    background-color: red;
+    border-radius: 50%;
+}
+
+.tramblock:hover img {
+    transform: scale(1.1);
+}
+
+.vehicleblock{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10vh;
+}

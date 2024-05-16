@@ -16,20 +16,22 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 export class AppComponent {
   title = 'Mapa Utrudnień MPK';
+  
 
 
-
-  constructor(public dialogRef: MatDialog) {
-    this._windowSchedule = this.dialogRef.open(ScheduleDialogComponent);
-    this._windowSchedule.updateSize("300px", "300px");
-  }
-
-  private _windowSchedule;
-  closeDialog() {
-    this._windowSchedule.close();
-  }
-
-
+  // constructor(public dialogRef: MatDialog) {
+  //   this._windowSchedule = this.dialogRef.open(ScheduleDialogComponent);
+  //   this.closeDialog();
+  // }
+  
+  // private _windowSchedule;
+  // closeDialog() {
+  //   this._windowSchedule.close();
+  // }
+  
+  // openscheduleDialog(){
+  //   this._windowSchedule = this.dialogRef.open(ScheduleDialogComponent);
+  // }
 
 
 

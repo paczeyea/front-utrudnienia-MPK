@@ -13,7 +13,8 @@ export class buttonsComponent {
   
   openScheduleDialog(){
     const dialogRef = this.dialog.open(ScheduleDialogComponent, {
-      width: '250px'
+      width: '25%'
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
