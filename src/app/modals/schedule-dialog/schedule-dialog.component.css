@@ -13,8 +13,8 @@ mat-dialog-content{
 
 .numberofvehicle{
     display: grid;
-    height: 2vw;
-    width: 3vh;
+    height: auto;
+    width: 100%;
 }
 
 .schedule-modal{

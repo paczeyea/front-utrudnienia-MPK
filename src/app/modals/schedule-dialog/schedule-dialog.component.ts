@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 
+let vehicle_list = [1,2,3,4,5,6,7,8,9,10];
 
 @Component({
   selector: 'app-schedule-dialog',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class ScheduleDialogComponent {
 
 constructor(){
-  
+
 }
 showBusNumbers: boolean = true;
 showTramNumbers: boolean = false;
