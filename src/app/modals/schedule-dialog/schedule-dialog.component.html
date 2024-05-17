@@ -6,7 +6,7 @@
   </div>
   <ng-container *ngIf="showBusNumbers">
   <div class="numbers-container">
-    <button class="numberofvehicle" (click)="sidepanelView('1')">1</button>
+    <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
     <button class="numberofvehicle">2</button>
     <button class="numberofvehicle">3</button>
     <button class="numberofvehicle">4</button>
@@ -30,8 +30,8 @@
   </div>
   </ng-container>
 </div> 
-<!-- 
-<ng-container *ngIf="issidepanel">
+
+<!-- <ng-container *ngIf="issidepanel">
   <div id="side-panel">
     <button>testy</button>
   </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-
+import { WhitePanelComponent } from '../white-panel/white-panel.component';
 
 @Component({
   selector: 'app-schedule-dialog',
@@ -19,7 +19,7 @@ constructor(private dialog: MatDialog){
 }
 showBusNumbers: boolean = true;
 showTramNumbers: boolean = false;
-issidepanel: boolean = false;
+// issidepanel: boolean = false;
 
 
 toggleView(view: string){
@@ -33,17 +33,18 @@ toggleView(view: string){
   }
 }
 
-sidepanelView(number: string){
-  this.issidepanel = !this.issidepanel;
-  if(this.issidepanel == true){
-    console.log("wysunięty albo nie");
-  }
-}
+// sidepanelView(number: string){
+//   this.issidepanel = !this.issidepanel;
+//   if(this.issidepanel == true){
+//     console.log("wysunięty albo nie");
+//   }
+// }
 
-openScheduleDialog(){
-  const dialogRef = this.dialog.open(ScheduleDialogComponent, {
-    width: '55%'
+openWhitePanel(){
+  const dialogRef = this.dialog.open(WhitePanelComponent, {
+    width: '70%'
   });
+  console.log("działa");
 }
 
 }
