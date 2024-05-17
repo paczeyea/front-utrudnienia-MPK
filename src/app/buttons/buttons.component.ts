@@ -13,13 +13,13 @@ export class buttonsComponent {
   
   openScheduleDialog(){
     const dialogRef = this.dialog.open(ScheduleDialogComponent, {
-      width: '25%'
+      width: '55%'
 
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog closed');
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('Dialog closed');
+    // });
   }
 
 }
