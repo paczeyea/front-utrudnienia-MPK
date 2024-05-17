@@ -2,6 +2,9 @@ mat-dialog-content{
     z-index: 100;
 }
 
+#schedule-modal-text{
+    text-align: center;
+}
 
 .numbers-container{
     border: none;
@@ -9,10 +12,11 @@ mat-dialog-content{
     padding: 0;
     border-radius: 2%;
     height: 30vw;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .numberofvehicle{
-    display: grid;
     height: 2vw;
     width: 3vh;
 }
@@ -33,6 +37,7 @@ mat-dialog-content{
 .busblock:hover{
     background-color: red;
     border-radius: 50%;
+    border: 5%;
 }
 
 .busblock:hover img {
@@ -60,4 +65,16 @@ mat-dialog-content{
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 10vh;
+}
+
+#side-panel{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px; 
+    height: 100%;
+    background-color: white;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+    z-index: 9999;
 }

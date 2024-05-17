@@ -1,11 +1,12 @@
 <div class="schedule-modal">
+  <p id="schedule-modal-text">Wybierz pojazd i jego numer</p>
   <div class="vehicleblock">
     <button class="busblock" id="busBlockButton" (click)="toggleView('bus')"><img src="./assets/assets-buttons/bus.svg" alt="bus"></button>
     <button class="tramblock" id="tramBlockButton" (click)="toggleView('tram')"><img src="./assets/assets-buttons/tram.svg" alt="bus"></button>
   </div>
   <ng-container *ngIf="showBusNumbers">
   <div class="numbers-container">
-    <button class="numberofvehicle">1</button>
+    <button class="numberofvehicle" (click)="sidepanelView('1')">1</button>
     <button class="numberofvehicle">2</button>
     <button class="numberofvehicle">3</button>
     <button class="numberofvehicle">4</button>
@@ -25,7 +26,13 @@
     <button class="numberofvehicle">F</button>
     <button class="numberofvehicle">G</button>
     <button class="numberofvehicle">H</button>
+    <button class="numberofvehicle">A</button>
   </div>
   </ng-container>
 </div> 
-
+<!-- 
+<ng-container *ngIf="issidepanel">
+  <div id="side-panel">
+    <button>testy</button>
+  </div>
+</ng-container> -->

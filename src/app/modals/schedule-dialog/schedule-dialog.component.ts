@@ -14,11 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 export class ScheduleDialogComponent {
 
-constructor(){
+constructor(private dialog: MatDialog){
   
 }
 showBusNumbers: boolean = true;
 showTramNumbers: boolean = false;
+issidepanel: boolean = false;
+
 
 toggleView(view: string){
   if(view == 'bus'){
@@ -31,9 +33,18 @@ toggleView(view: string){
   }
 }
 
+sidepanelView(number: string){
+  this.issidepanel = !this.issidepanel;
+  if(this.issidepanel == true){
+    console.log("wysunięty albo nie");
+  }
+}
 
-
-
+openScheduleDialog(){
+  const dialogRef = this.dialog.open(ScheduleDialogComponent, {
+    width: '55%'
+  });
+}
 
 }
 
