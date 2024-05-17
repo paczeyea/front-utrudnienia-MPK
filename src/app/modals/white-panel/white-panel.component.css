@@ -1,0 +1,9 @@
+#white-panel{
+    display: flex;
+    justify-content: right;
+    background-color: white;
+    border-color: gray;
+    width: 70%;
+    height: 100%;
+    z-index: 99999;
+}
