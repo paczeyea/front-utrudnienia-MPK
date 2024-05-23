@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { VehiclesService } from '../../services/vehicles.service';
 
 @Component({
   selector: 'app-loc-dialog',
@@ -9,14 +10,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './loc-dialog.component.html',
   styleUrl: './loc-dialog.component.css'
 })
-export class LocDialogComponent {
+export class LocDialogComponent {  
 
-
-  constructor(private dialog: MatDialog){}
+  constructor(private vehicleService: VehiclesService) {}
   showBusNumbers: boolean = true;
   showTramNumbers: boolean = false;
-  shownVehiclesList: string[] = [];
-
+  
 
 
   toggleView(view: string){
@@ -36,24 +35,19 @@ export class LocDialogComponent {
     else{
       this.addToShownVehicleList(number);
     }
-    console.log(this.shownVehiclesList);
+    console.log(this.vehicleService.getVehicleNumbers());
   }
 
   addToShownVehicleList(number: string){
-    this.shownVehiclesList.push(number);
-    // console.log(this.shownVehiclesList); 
+    this.vehicleService.addVehicleNumber(number);
   }
 
   rmFromShownVehicleList(number: string){
-    const index = this.shownVehiclesList.indexOf(number);
-    if(index !== -1){
-      this.shownVehiclesList.splice(index, 1);
-    }
-    // console.log(this.shownVehiclesList);
+    this.vehicleService.rmFromShownVehicleList(number);
   }
 
-  isElementinList(number: string): boolean{
-    return this.shownVehiclesList.includes(number);
+  isElementinList(number: string): boolean {
+    return this.vehicleService.isElementinList(number)
   }
 
 
