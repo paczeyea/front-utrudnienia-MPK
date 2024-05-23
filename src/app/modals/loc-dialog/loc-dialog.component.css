@@ -2,7 +2,7 @@ mat-dialog-content{
     z-index: 100;
 }
 
-#loc-modal-text{
+#schedule-modal-text{
     text-align: center;
 }
 
@@ -11,17 +11,20 @@ mat-dialog-content{
     background-color: rgb(255, 255, 255);
     padding: 0;
     border-radius: 2%;
-    height: 30vw;
-    display: flex;
-    flex-wrap: wrap;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
 
 .numberofvehicle{
-    height: 2vw;
-    width: 3vh;
+    height: 10vw;
+    width: 100%;
 }
 
-.loc-modal{
+.schedule-modal{
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -71,7 +74,7 @@ mat-dialog-content{
     position: absolute;
     top: 0;
     right: 0;
-    width: 300px; 
+    width: 300px;
     height: 100%;
     background-color: white;
     transition: transform 0.3s ease;
