@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { ScheduleDialogComponent } from './modals/schedule-dialog/schedule-dialog.component';
+import { WhitePanelComponent } from './modals/white-panel/white-panel.component';
 
 @NgModule ({
   declarations:
   [
-    ScheduleDialogComponent
+    ScheduleDialogComponent,
+    WhitePanelComponent
   ],
   imports: [
     MatSlideToggleModule,

@@ -1,0 +1,22 @@
+<div class="loc-modal">
+    <p id="loc-modal-text">Wybierz pojazd i jego numer</p>
+    <div class="vehicleblock">
+      <button class="busblock" id="busBlockButton" (click)="toggleView('bus')"><img src="./assets/assets-buttons/bus.svg" alt="bus"></button>
+      <button class="tramblock" id="tramBlockButton" (click)="toggleView('tram')"><img src="./assets/assets-buttons/tram.svg" alt="bus"></button>
+    </div>
+    <ng-container *ngIf="showBusNumbers">
+    <div class="numbers-container">
+      <button class="numberofvehicle" (click)="toggleElement('1')">1</button>
+      <button class="numberofvehicle" (click)="toggleElement('2')">2</button>
+      <button class="numberofvehicle"(click)="toggleElement('3')">3</button>
+      <button class="numberofvehicle" (click)="toggleElement('4')">4</button>
+      <button class="numberofvehicle" (click)="toggleElement('5')">5</button>    
+    </div>
+    </ng-container>
+    <ng-container *ngIf="showTramNumbers">
+    <div class="numbers-container" *ngIf="showTramNumbers">
+      <button class="numberofvehicle" (click)="toggleElement('A')">A</button>
+    </div>
+    </ng-container>
+  </div> 
+  

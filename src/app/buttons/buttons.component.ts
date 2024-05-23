@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ScheduleDialogComponent } from '../modals/schedule-dialog/schedule-dialog.component';
+import { LocDialogComponent } from '../modals/loc-dialog/loc-dialog.component';
 
 @Component({
   selector: 'app-buttonsComponent',
@@ -14,12 +15,11 @@ export class buttonsComponent {
   openScheduleDialog(){
     const dialogRef = this.dialog.open(ScheduleDialogComponent, {
       width: '55%'
-
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('Dialog closed');
-    // });
   }
-
+  openLocDialog(){
+    const dialogRef = this.dialog.open(LocDialogComponent, {
+      width: '55%'
+    });
+  }
 }
