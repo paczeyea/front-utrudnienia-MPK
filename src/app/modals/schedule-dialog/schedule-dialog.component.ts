@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { WhitePanelComponent } from '../white-panel/white-panel.component';
 
+// {"1" : {"trip_id" : 3_31231121}}
 @Component({
   selector: 'app-schedule-dialog',
   standalone: true,
@@ -15,7 +16,7 @@ import { WhitePanelComponent } from '../white-panel/white-panel.component';
 export class ScheduleDialogComponent {
 
 constructor(private dialog: MatDialog){
-  
+
 }
 showBusNumbers: boolean = true;
 showTramNumbers: boolean = false;
