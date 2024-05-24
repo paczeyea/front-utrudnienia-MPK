@@ -11,6 +11,9 @@ import { buttonsComponent } from '../buttons/buttons.component';
 })
 export class MapComponent implements OnInit {
 
+
+
+  constructor(){}
   map: any;
   GPSmarker: any;
   GPScircle: any;
@@ -29,6 +32,7 @@ export class MapComponent implements OnInit {
     });
     
     navigator.geolocation.watchPosition(this.success.bind(this), this.error.bind(this));
+    this.addBusMarker(51.1290, 17.0376);
   }
 
   success(pos: { coords: { latitude: any; longitude: any; accuracy: any; }; }){
@@ -56,5 +60,10 @@ export class MapComponent implements OnInit {
     else{
       alert("Nie udało się pobrać lokalizacji");
     }
+  }
+
+
+  addBusMarker(posLat: number, posLon: number){
+    L.marker([posLat, posLon], { icon: this.GPSicon } ).addTo(this.map);
   }
 }
