@@ -29,10 +29,18 @@ export class LocDialogComponent implements OnInit{
   trams: Route[] = [];
 
   ngOnInit() {
-    this.http.get<Route[]>('http://localhost:8080/routes').subscribe((data: Route[]) => {
-      this.buses = data.filter(route => route.routeType === 3);
-      this.trams = data.filter(route => route.routeType === 0);
-    });
+    this.http.get<Route[]>('http://localhost:8080/routes').subscribe(
+      (data: Route[]) => {
+        this.buses = data.filter(route => route.routeType === 3);
+        this.trams = data.filter(route => route.routeType === 0);
+      },
+      (error) => {
+        console.error('There was an error!', error);
+        // Ustawiamy domyślne wartości dla buses i trams
+        this.buses = [{routeId: '101', routeType: 3, validFrom: ''}, {routeId: '102', routeType: 3, validFrom: ''}, {routeId: '103', routeType: 3, validFrom: ''}];
+        this.trams = [{routeId: '21', routeType: 0, validFrom: ''}, {routeId: '22', routeType: 0, validFrom: ''}, {routeId: '23', routeType: 0, validFrom: ''}];
+      }
+    );
   }
 
   toggleView(view: string){
