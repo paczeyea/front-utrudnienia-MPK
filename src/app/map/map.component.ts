@@ -11,10 +11,14 @@ import { buttonsComponent } from '../buttons/buttons.component';
 })
 export class MapComponent implements OnInit {
 
+
+
+  constructor(){}
   map: any;
   GPSmarker: any;
   GPScircle: any;
   GPSicon: any;
+  BusGPSicon: any;
 
   ngOnInit(): void {
     this.map = L.map('map').setView([51.1356, 17.0376], 15);
@@ -29,6 +33,14 @@ export class MapComponent implements OnInit {
     });
     
     navigator.geolocation.watchPosition(this.success.bind(this), this.error.bind(this));
+
+    this.BusGPSicon = L.icon({
+      iconUrl: './assets/assets-buttons/bus.svg',
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
+    })
+
+    this.addBusMarker(51.1290, 17.0376);
   }
 
   success(pos: { coords: { latitude: any; longitude: any; accuracy: any; }; }){
@@ -56,5 +68,10 @@ export class MapComponent implements OnInit {
     else{
       alert("Nie udało się pobrać lokalizacji");
     }
+  }
+
+
+  addBusMarker(posLat: number, posLon: number){
+    L.marker([posLat, posLon], { icon: this.BusGPSicon } ).addTo(this.map);
   }
 }
