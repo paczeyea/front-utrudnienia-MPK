@@ -1,22 +1,39 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { VehiclesService } from '../../services/vehicles.service';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+
+interface Route {
+  routeId: string;
+  routeType: number;
+  validFrom: string;
+}
 
 @Component({
   selector: 'app-loc-dialog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './loc-dialog.component.html',
   styleUrl: './loc-dialog.component.css'
 })
-export class LocDialogComponent {  
 
-  constructor(private vehicleService: VehiclesService) {}
+
+
+export class LocDialogComponent implements OnInit{
+
+  constructor(private vehicleService: VehiclesService, private http: HttpClient) {}
   showBusNumbers: boolean = true;
   showTramNumbers: boolean = false;
-  
+  buses: Route[] = [];
+  trams: Route[] = [];
 
+  ngOnInit() {
+    this.http.get<Route[]>('http://localhost:8080/routes').subscribe((data: Route[]) => {
+      this.buses = data.filter(route => route.routeType === 3);
+      this.trams = data.filter(route => route.routeType === 0);
+    });
+  }
 
   toggleView(view: string){
     if(view == 'bus'){
@@ -27,7 +44,7 @@ export class LocDialogComponent {
       this.showBusNumbers = false;
       this.showTramNumbers = true;
     }}
-  
+
   toggleElement(number: string){
     if(this.isElementinList(number)){
       this.rmFromShownVehicleList(number);
