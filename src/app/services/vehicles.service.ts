@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {interval, map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,16 @@ export class VehiclesService {
   private serviceShownVehiclesList: string[] = [];
 
   constructor(){}
+
+  startAddingBusMarkers(): Observable<{ lat: number, lon: number }> {
+    return interval(5000).pipe(
+      map(() => {
+        const lat = 51.1290 + Math.random() * 0.01;
+        const lon = 17.0376 + Math.random() * 0.01;
+        return { lat, lon };
+      })
+    );
+  }
 
   public getVehicleNumbers(): string[]{
     return this.serviceShownVehiclesList;

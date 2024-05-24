@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as L from 'leaflet';
 import { buttonsComponent } from '../buttons/buttons.component';
+import {VehiclesService} from "../services/vehicles.service";
 
 @Component({
   selector: 'app-map',
@@ -11,27 +12,26 @@ import { buttonsComponent } from '../buttons/buttons.component';
 })
 export class MapComponent implements OnInit {
 
-
-
-  constructor(){}
+  constructor(private vehicleService: VehiclesService){}
   map: any;
   GPSmarker: any;
   GPScircle: any;
   GPSicon: any;
   BusGPSicon: any;
+  private subscription: any;
 
   ngOnInit(): void {
     this.map = L.map('map').setView([51.1356, 17.0376], 15);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&amp;copy; &lt;a href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors'
     }).addTo(this.map);
-  
+
     this.GPSicon = L.icon({
       iconUrl: './assets/pin/location-pin.svg',
       iconSize: [32, 32],
       iconAnchor: [16, 16]
     });
-    
+
     navigator.geolocation.watchPosition(this.success.bind(this), this.error.bind(this));
 
     this.BusGPSicon = L.icon({
@@ -40,7 +40,13 @@ export class MapComponent implements OnInit {
       iconAnchor: [16, 16]
     })
 
-    this.addBusMarker(51.1290, 17.0376);
+    this.subscription = this.vehicleService.startAddingBusMarkers().subscribe(pos => {
+      this.addBusMarker(pos.lat, pos.lon);
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   success(pos: { coords: { latitude: any; longitude: any; accuracy: any; }; }){
@@ -57,7 +63,7 @@ export class MapComponent implements OnInit {
 
     this.GPSmarker = L.marker([lat, lng], { icon: this.GPSicon }).addTo(this.map);
     this.GPScircle = L.circle([lat, lng], { radius: accuracy }).addTo(this.map);
-      
+
     this.map.fitBounds(this.GPScircle.getBounds());
   }
 
@@ -71,7 +77,8 @@ export class MapComponent implements OnInit {
   }
 
 
-  addBusMarker(posLat: number, posLon: number){
-    L.marker([posLat, posLon], { icon: this.BusGPSicon } ).addTo(this.map);
+  addBusMarker(posLat: number, posLon: number): L.Marker {
+    const marker = L.marker([posLat, posLon], { icon: this.BusGPSicon }).addTo(this.map);
+    return marker;
   }
 }
