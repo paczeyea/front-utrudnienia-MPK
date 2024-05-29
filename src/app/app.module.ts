@@ -22,6 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     HttpClientModule
 ],
+providers: [HttpClientModule],
 bootstrap: [AppComponent]
 
 })
