@@ -5,24 +5,25 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { ScheduleDialogComponent } from './modals/schedule-dialog/schedule-dialog.component';
 import { WhitePanelComponent } from './modals/white-panel/white-panel.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule ({
   declarations:
   [
     ScheduleDialogComponent,
-    WhitePanelComponent
+    WhitePanelComponent,
+    AppComponent
   ],
   imports: [
+    BrowserModule,
     MatSlideToggleModule,
-    AppComponent,
     MatDialogModule,
-    CommonModule
-]
+    CommonModule,
+    HttpClientModule
+],
+bootstrap: [AppComponent]
 
 })
-
-
-
-
 
 class AppModule {}

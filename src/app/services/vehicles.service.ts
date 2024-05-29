@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {interval, map, Observable} from "rxjs";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehiclesService {
   private serviceShownVehiclesList: string[] = [];
+  private apiUrl = 'http://localhost:8080/vehiclepositions/latest?routeIds=Test,Test2';
 
-  constructor(){}
+  constructor(private http: HttpClient){}
 
   startAddingBusMarkers(): Observable<{ lat: number, lon: number }> {
     return interval(5000).pipe(
@@ -37,4 +39,15 @@ export class VehiclesService {
   public isElementinList(number: string): boolean{
     return this.serviceShownVehiclesList.includes(number);
   }
+
+  // public sendRoutesIds(serviceShownVehiclesList: string[]): Observable<any>{
+  //   const url = `${this.apiUrl}?routeIds=${serviceShownVehiclesList.join(',')}`;
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
+  //   return this.http.post<any>(url, {}, { headers });
+  // }
+
+
+
 }
