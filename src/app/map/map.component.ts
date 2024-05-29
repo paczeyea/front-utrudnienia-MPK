@@ -1,7 +1,38 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as L from 'leaflet';
-import { buttonsComponent } from '../buttons/buttons.component';
+import {buttonsComponent} from '../buttons/buttons.component';
 import {VehiclesService} from "../services/vehicles.service";
+
+interface Route {
+  routeId: string;
+  routeType: number;
+  validFrom: string;
+}
+
+interface Trip {
+  tripId: string;
+  routeId: string;
+  route: Route;
+  tripHeadsign: string;
+  directionId: number;
+  shapeId: number;
+  variantId: number;
+}
+
+interface Vehicle {
+  vehicleID: number;
+  tripId: string;
+  trip: Trip;
+}
+
+interface VehiclePosition {
+  posId: number;
+  vehicleID: number;
+  vehicle: Vehicle;
+  posLat: number;
+  posLon: number;
+  timestamp: string;
+}
 
 @Component({
   selector: 'app-map',
@@ -12,13 +43,30 @@ import {VehiclesService} from "../services/vehicles.service";
 })
 export class MapComponent implements OnInit {
 
-  constructor(private vehicleService: VehiclesService){}
+  constructor(private vehicleService: VehiclesService) {
+  }
+
   map: any;
   GPSmarker: any;
   GPScircle: any;
   GPSicon: any;
-  BusGPSicon: any;
+  BusGPSicon = L.icon({
+    iconUrl: './assets/assets-buttons/bus.svg',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
+  });
+  TramGPSicon = L.icon({
+    iconUrl: './assets/assets-buttons/tram.svg',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
+  });
+  PinGPSicon = L.icon({
+    iconUrl: './assets/pin/location-pin.svg',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
+  });
   private subscription: any;
+  private busMarkers: { [vehicleID: number]: L.Marker } = {};
 
   ngOnInit(): void {
     this.map = L.map('map').setView([51.1356, 17.0376], 15);
@@ -34,14 +82,16 @@ export class MapComponent implements OnInit {
 
     navigator.geolocation.watchPosition(this.success.bind(this), this.error.bind(this));
 
-    this.BusGPSicon = L.icon({
-      iconUrl: './assets/assets-buttons/bus.svg',
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
-    })
 
-    this.subscription = this.vehicleService.startAddingBusMarkers().subscribe(pos => {
-      this.addBusMarker(pos.lat, pos.lon);
+    this.subscription = this.vehicleService.startAddingBusMarkers().subscribe((vehiclePositions: VehiclePosition[]) => {
+      for (const vehiclePosition of vehiclePositions) {
+        if (this.busMarkers[vehiclePosition.vehicleID]) {
+          this.map.removeLayer(this.busMarkers[vehiclePosition.vehicleID]);
+        }
+        this.busMarkers[vehiclePosition.vehicleID] = this.addVehicleMarker(
+          vehiclePosition.posLat, vehiclePosition.posLon,
+          vehiclePosition.vehicle.trip.route.routeType);
+      }
     });
   }
 
@@ -49,7 +99,7 @@ export class MapComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  success(pos: { coords: { latitude: any; longitude: any; accuracy: any; }; }){
+  success(pos: { coords: { latitude: any; longitude: any; accuracy: any; }; }) {
     const lat = pos.coords.latitude;
     const lng = pos.coords.longitude;
     const accuracy = pos.coords.accuracy;
@@ -61,24 +111,40 @@ export class MapComponent implements OnInit {
       this.map.removeLayer(this.GPScircle);
     }
 
-    this.GPSmarker = L.marker([lat, lng], { icon: this.GPSicon }).addTo(this.map);
-    this.GPScircle = L.circle([lat, lng], { radius: accuracy }).addTo(this.map);
+    this.GPSmarker = L.marker([lat, lng], {icon: this.GPSicon}).addTo(this.map);
+    this.GPScircle = L.circle([lat, lng], {radius: accuracy}).addTo(this.map);
 
     this.map.fitBounds(this.GPScircle.getBounds());
   }
 
-  error(err: any){
-    if(err.code === 1){
+  error(err: any) {
+    if (err.code === 1) {
       alert("Nie pozwolono na geolokalizację");
-    }
-    else{
+    } else {
       alert("Nie udało się pobrać lokalizacji");
     }
   }
 
 
-  addBusMarker(posLat: number, posLon: number): L.Marker {
-    const marker = L.marker([posLat, posLon], { icon: this.BusGPSicon }).addTo(this.map);
+  addVehicleMarker(posLat: number, posLon: number, type: number): L.Marker {
+    let icon;
+    switch (type) {
+      case 0: {
+        icon = this.BusGPSicon;
+        break;
+      }
+      case 3: {
+        icon = this.TramGPSicon;
+        break;
+      }
+      default: {
+        icon = this.PinGPSicon;
+      }
+    }
+
+
+    const marker = L.marker([posLat, posLon],
+      {icon: icon}).addTo(this.map);
     return marker;
   }
 }
