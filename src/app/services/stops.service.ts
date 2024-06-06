@@ -20,7 +20,7 @@ export class StopsService {
 
   constructor(private http: HttpClient) { }
 
-  getStopsFromCsv(): Observable<Stop[]> {
+  getStopsFromfile(): Observable<Stop[]> {
     return this.http.get(this.csvUrl, { responseType: 'text' }).pipe(
       map(csvData => {
         const lines = csvData.split('\n');
