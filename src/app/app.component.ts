@@ -19,21 +19,8 @@ import { LocDialogComponent } from './modals/loc-dialog/loc-dialog.component';
 export class AppComponent {
   title = 'Mapa Utrudnień MPK';
   
-
-
-  // constructor(public dialogRef: MatDialog) {
-  //   this._windowSchedule = this.dialogRef.open(ScheduleDialogComponent);
-  //   this.closeDialog();
-  // }
   
-  // private _windowSchedule;
-  // closeDialog() {
-  //   this._windowSchedule.close();
-  // }
-  
-  // openscheduleDialog(){
-  //   this._windowSchedule = this.dialogRef.open(ScheduleDialogComponent);
-  // }
+
 
 
 
