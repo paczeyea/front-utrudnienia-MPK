@@ -7,6 +7,8 @@ import { ScheduleDialogComponent } from './modals/schedule-dialog/schedule-dialo
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { WhitePanelComponent } from './modals/white-panel/white-panel.component';
 import { LocDialogComponent } from './modals/loc-dialog/loc-dialog.component';
+import { ReportDialogComponent } from './modals/report-dialog/report-dialog.component';
+
 
 @Component({
   selector: 'app-root',

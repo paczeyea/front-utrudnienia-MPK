@@ -1,62 +1,65 @@
-<div class="schedule-modal">
-  <p id="schedule-modal-text">Wybierz pojazd i jego numer</p>
-  <div class="vehicleblock">
-    <button class="busblock" id="busBlockButton" (click)="toggleView('bus')"><img src="./assets/assets-buttons/bus.svg" alt="bus"></button>
-    <button class="tramblock" id="tramBlockButton" (click)="toggleView('tram')"><img src="./assets/assets-buttons/tram.svg" alt="bus"></button>
-  </div>
+<div class="schedule-modal bg-opacity-50 p-4 bg-gray-500">
+  <p id="schedule-modal-text" class="text-center">Wybierz pojazd i jego numer</p>
+  <div class="vehicleblock grid grid-cols-2 gap-10">
+    <button class="busblock bg-white p-0 rounded-full hover:bg-red-500 hover:rounded-full transition-all flex items-center justify-center" id="busBlockButton" (click)="toggleView('bus')">
+        <img src="./assets/assets-buttons/bus.svg" alt="bus" class="transition-transform hover:scale-110 ">
+    </button>
+    <button class="tramblock bg-white p-0 rounded-full hover:bg-red-500 hover:rounded-full transition-all flex items-center justify-center" id="tramBlockButton" (click)="toggleView('tram')">
+        <img src="./assets/assets-buttons/tram.svg" alt="tram" class="transition-transform hover:scale-110">
+    </button>
+</div>
+
   <ng-container *ngIf="showBusNumbers">
-  <div class="numbers-container">
-    <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
-    <button class="numberofvehicle">2</button>
-    <button class="numberofvehicle">3</button>
-    <button class="numberofvehicle">4</button>
-    <button class="numberofvehicle">5</button>
-    <button class="numberofvehicle">6</button>
-    <button class="numberofvehicle">7</button>
-    <button class="numberofvehicle">8</button>
-    <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
-    <button class="numberofvehicle">2</button>
-    <button class="numberofvehicle">3</button>
-    <button class="numberofvehicle">4</button>
-    <button class="numberofvehicle">5</button>
-    <button class="numberofvehicle">6</button>
-    <button class="numberofvehicle">7</button>
-    <button class="numberofvehicle">8</button>
-    <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
-    <button class="numberofvehicle">2</button>
-    <button class="numberofvehicle">3</button>
-    <button class="numberofvehicle">4</button>
-    <button class="numberofvehicle">5</button>
-    <button class="numberofvehicle">6</button>
-    <button class="numberofvehicle">7</button>
-    <button class="numberofvehicle">8</button>
-    <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
-    <button class="numberofvehicle">2</button>
-    <button class="numberofvehicle">3</button>
-    <button class="numberofvehicle">4</button>
-    <button class="numberofvehicle">5</button>
-    <button class="numberofvehicle">6</button>
-    <button class="numberofvehicle">7</button>
-    <button class="numberofvehicle">8</button>
-  </div>
+      <div class="grid grid-cols-5  bg-white p-0 rounded-md">
+          <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
+          <button class="numberofvehicle">2</button>
+          <button class="numberofvehicle">3</button>
+          <button class="numberofvehicle">4</button>
+          <button class="numberofvehicle">5</button>
+          <button class="numberofvehicle">6</button>
+          <button class="numberofvehicle">7</button>
+          <button class="numberofvehicle">8</button>
+          <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
+          <button class="numberofvehicle">2</button>
+          <button class="numberofvehicle">3</button>
+          <button class="numberofvehicle">4</button>
+          <button class="numberofvehicle">5</button>
+          <button class="numberofvehicle">6</button>
+          <button class="numberofvehicle">7</button>
+          <button class="numberofvehicle">8</button>
+          <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
+          <button class="numberofvehicle">2</button>
+          <button class="numberofvehicle">3</button>
+          <button class="numberofvehicle">4</button>
+          <button class="numberofvehicle">5</button>
+          <button class="numberofvehicle">6</button>
+          <button class="numberofvehicle">7</button>
+          <button class="numberofvehicle">8</button>
+          <button class="numberofvehicle" (click)="openWhitePanel()">1</button>
+          <button class="numberofvehicle">2</button>
+          <button class="numberofvehicle">3</button>
+          <button class="numberofvehicle">4</button>
+          <button class="numberofvehicle">5</button>
+          <button class="numberofvehicle">6</button>
+          <button class="numberofvehicle">7</button>
+          <button class="numberofvehicle">8</button>
+      </div>
   </ng-container>
+
   <ng-container *ngIf="showTramNumbers">
-  <div class="numbers-container" *ngIf="showTramNumbers">
-    <button class="numberofvehicle">A</button>
-    <button class="numberofvehicle">B</button>
-    <button class="numberofvehicle">C</button>
-    <button class="numberofvehicle">D</button>
-    <button class="numberofvehicle">E</button>
-    <button class="numberofvehicle">F</button>
-    <button class="numberofvehicle">G</button>
-    <button class="numberofvehicle">H</button>
-    <button class="numberofvehicle">A</button>
-  </div>
+      <div class="grid grid-cols-5  bg-white p-0 rounded-md">
+          <button class="numberofvehicle">A</button>
+          <button class="numberofvehicle">B</button>
+          <button class="numberofvehicle">C</button>
+          <button class="numberofvehicle">D</button>
+          <button class="numberofvehicle">E</button>
+          <button class="numberofvehicle">F</button>
+          <button class="numberofvehicle">G</button>
+          <button class="numberofvehicle">H</button>
+          <button class="numberofvehicle">A</button>
+      </div>
   </ng-container>
 </div>
 
-<!-- <ng-container *ngIf="issidepanel">
-  <div id="side-panel">
-    <button>testy</button>
-  </div>
-</ng-container> -->
+<div id="side-panel" class="absolute top-0 right-0 w-72 h-full bg-white transition-transform duration-300 ease-in-out transform translate-x-full z-50">
+</div>

@@ -15,7 +15,7 @@ interface Route {
   standalone: true,
   imports: [CommonModule, HttpClientModule],
   templateUrl: './loc-dialog.component.html',
-  styleUrl: './loc-dialog.component.css'
+  // styleUrl: './loc-dialog.component.css'
 })
 
 

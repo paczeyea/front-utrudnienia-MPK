@@ -10,8 +10,8 @@ import { WhitePanelComponent } from '../white-panel/white-panel.component';
   imports:[
     CommonModule
   ],
-  templateUrl: './schedule-dialog.component.html',
-  styleUrls: ['./schedule-dialog.component.css']
+  templateUrl: './schedule-dialog.component.html'
+  // styleUrls: ['./schedule-dialog.component.css']
 })
 export class ScheduleDialogComponent {
 
