@@ -111,12 +111,12 @@ export class MapComponent implements OnInit {
         }
       });
 
-    this.addStopSign(51.1356, 17.0376);
-    this.StopsService.getStopsFromfile().subscribe((stops: Stop[]) => {
-      for (const stop of stops) {
-        this.addStopSign(stop.stop_lat, stop.stop_lon);
-      }
-    });
+    // this.addStopSign(51.1356, 17.0376);
+    // this.StopsService.getStopsFromfile().subscribe((stops: Stop[]) => {
+    //   for (const stop of stops) {
+    //     this.addStopSign(stop.stop_lat, stop.stop_lon);
+    //   }
+    // });
 
 
 
